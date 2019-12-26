@@ -1,0 +1,28 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+# https://raw.githubusercontent.com/thoughtbot/guides/master/style/ruby/.rubocop.yml
+inherit_from: .rubocop/thoughtbot.yml
+
+AllCops:
+  Exclude:
+    - bin/*
+    - config/**/*
+    - db/**/*
+    - node_modules/**/*
+    - vendor/bundle/**/*
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Layout/DotPosition:
+  EnforcedStyle: leading
+
+Layout/LineLength:
+  Max: 120
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
