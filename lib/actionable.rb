@@ -2,6 +2,7 @@
 
 require "actionable/context"
 require "actionable/item"
+require "actionable/queue"
 require "actionable/version"
 
 # Actionable
