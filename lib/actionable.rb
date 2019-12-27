@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
+require "actionable/context"
+require "actionable/item"
 require "actionable/version"
 
-module Actionable
-end
+# Actionable
+# ==========
+#
+#
+module Actionable; end
