@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "actionable/context"
-require "actionable/item"
+require "actionable/task"
 require "actionable/queue"
 require "actionable/version"
 

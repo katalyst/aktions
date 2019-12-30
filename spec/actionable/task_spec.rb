@@ -2,15 +2,15 @@
 
 require_relative "../has_context_examples"
 
-class TestItem
-  include Actionable::Item
+class TestTask
+  include Actionable::Task
 end
 
-RSpec.describe Actionable::Item do
-  it_behaves_like "has context", TestItem.call
+RSpec.describe Actionable::Task do
+  it_behaves_like "has context", TestTask.call
 
   describe ".call" do
-    subject { TestItem.call }
+    subject { TestTask.call }
 
     it { expect(subject).to be_failure }
   end

@@ -3,7 +3,7 @@
 require "forwardable"
 
 module Actionable
-  module Item
+  module Task
     def self.included(base)
       base.extend Forwardable
       base.extend ClassMethods
@@ -18,7 +18,7 @@ module Actionable
       # Invokes the action with the default constructor arguments.
       #
       # @param [Actionable::Context, Hash] context The contextual arguments
-      # @return [Actionable] The implementing class instance
+      # @return [Actionable::Task] The implementing class instance
       def call(context = {})
         new.call(context)
       end
@@ -29,11 +29,22 @@ module Actionable
       # is then wrapped by this call.
       #
       # @param [Actionable::Context, Hash] context The contextual arguments
-      # @return [Actionable] The implementing class instance
+      # @return [Actionable::Task] The implementing class instance
       def call(context = {})
         @context = Context.build(context)
         @_result = super(@context) if defined?(super)
         self
+      end
+
+      protected
+
+      # Fails the call unless the supplied properties are available on the
+      # context. Provided as a means of context checking since named parameters
+      # cannot be used with the wrapped `#call` method.
+      #
+      # @param [Array(Symbol, String)] properties The properties to which the context must respond
+      def expect(*properties)
+        failure! unless properties.reduce(true) { |acc, p| acc && @context.respond_to?(p) }
       end
     end
   end

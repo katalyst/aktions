@@ -2,8 +2,8 @@
 
 require_relative "../has_context_examples"
 
-class AccumulatorItem
-  include Actionable::Item
+class AccumulatorTask
+  include Actionable::Task
 
   def call(context)
     step = context.step
@@ -21,27 +21,27 @@ end
 RSpec.describe Actionable::Queue do
   subject { queue.call(context) }
 
-  let(:queue) { described_class.new(items) }
-  let(:items) { nil }
+  let(:queue) { described_class.new(tasks) }
+  let(:tasks) { nil }
   let(:context) { nil }
 
    it_behaves_like "has context", described_class.call
 
   describe ".new" do
     it "rejects nil items" do
-      expect(queue.items).to be_empty
+      expect(queue.tasks).to be_empty
     end
   end
 
   describe "#add" do
     it "adds items to the queue" do
-      queue.add AccumulatorItem
-      expect(queue.items).to contain_exactly AccumulatorItem
+      queue.add AccumulatorTask
+      expect(queue.tasks).to contain_exactly AccumulatorTask
     end
   end
 
   describe "#call" do
-    let(:items) { [AccumulatorItem, AccumulatorItem, AccumulatorItem, AccumulatorItem] }
+    let(:tasks) { [AccumulatorTask, AccumulatorTask, AccumulatorTask, AccumulatorTask] }
     let(:context) { { step: 1, processed: [] } }
 
     it "exits at first failure" do
