@@ -1,15 +1,13 @@
-# Actionable
+# Aktions
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/actionable`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+`Aktions` is a simple action/interactor/command implementation, which aims to be only mildly opinionated.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'actionable'
+gem 'aktions'
 ```
 
 And then execute:
@@ -18,11 +16,21 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install actionable
+    $ gem install aktions
 
 ## Usage
 
-TODO: Write usage instructions here
+Include the `Aktions::Task` module in the required classes.
+
+```ruby
+class MyAction
+  include Aktions::Task
+
+  def call(params = {})
+    # Your code here...
+  end
+end
+```
 
 ## Development
 
@@ -32,4 +40,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/actionable.
+Bug reports and pull requests are welcome on GitHub at https://github.com/mattr/actionable.

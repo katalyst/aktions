@@ -2,13 +2,13 @@
 
 require "ostruct"
 
-module Actionable
+module Aktions # :nodoc:
   class Context < OpenStruct
     # Constructs a new context instance only if the passed argument is not
-    # already the `Actionable::Context`.
+    # already the `Aktions::Context`.
     #
-    # @param [Hash, Actionable::Context] context The context (data)
-    # @return [Actionable::Context] The context instance
+    # @param [Hash, Aktions::Context] context The context (data)
+    # @return [Aktions::Context] The context instance
     def self.build(context = {})
       self === context ? context : new(context)
     end

@@ -2,7 +2,7 @@
 
 require_relative "../has_context_examples"
 
-RSpec.describe Actionable::Context do
+RSpec.describe Aktions::Context do
   subject(:context) { described_class.new(params) }
 
   let(:params) { { a: "one", b: "two" } }

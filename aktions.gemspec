@@ -1,16 +1,16 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "actionable/version"
+require "aktions/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "actionable"
-  spec.version       = Actionable::VERSION
+  spec.name          = "aktions"
+  spec.version       = Aktions::VERSION
   spec.authors       = ["Matt Redmond"]
   spec.email         = ["matt.redmond@katalyst.com.au"]
 
   spec.summary       = "Action/Command/Interactor pattern implementation"
-  spec.description   = "Actionable provides a simple and unopinionated pattern for extracting complex business logic"
-  spec.homepage      = "https://github.com/kataylst/actionable"
+  spec.description   = "Aktions provides a simple and unopinionated interactor pattern for extracting complex business logic"
+  spec.homepage      = "https://github.com/kataylst/aktions"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 

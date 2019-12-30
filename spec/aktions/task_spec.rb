@@ -3,10 +3,10 @@
 require_relative "../has_context_examples"
 
 class TestTask
-  include Actionable::Task
+  include Aktions::Task
 end
 
-RSpec.describe Actionable::Task do
+RSpec.describe Aktions::Task do
   it_behaves_like "has context", TestTask.call
 
   describe ".call" do

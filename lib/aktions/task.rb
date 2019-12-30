@@ -2,7 +2,30 @@
 
 require "forwardable"
 
-module Actionable
+module Aktions # :nodoc:
+  # `Aktions::Task` allows business logic to be extracted from the main flow
+  # to be processed in isolation.
+  #
+  # The module provides a single method `call`, available on both the class and
+  # the instance, which accepts a hash or `Aktions::Context` instance as a
+  # parameter. The class version of the method is a wrapper for the instance
+  # method with the default constructor params. This allows implementing
+  # classes to handle dependency injection without making any assumptions.
+  #
+  # @example
+  #   class MyClass
+  #     include Aktions::Task
+  #
+  #     def initialize(service: MyServiceClass)
+  #       @service = service
+  #     end
+  #
+  #     def call
+  #       # do something with @service here
+  #     end
+  #   end
+  #
+  #   MyClass.call # @service instance variable is automatically initialized
   module Task
     def self.included(base)
       base.extend Forwardable
@@ -17,8 +40,8 @@ module Actionable
     module ClassMethods
       # Invokes the action with the default constructor arguments.
       #
-      # @param [Actionable::Context, Hash] context The contextual arguments
-      # @return [Actionable::Task] The implementing class instance
+      # @param [Aktions::Context, Hash] context The contextual arguments
+      # @return [Aktions::Task] The implementing class instance
       def call(context = {})
         new.call(context)
       end
@@ -28,8 +51,8 @@ module Actionable
       # Main entry point. The implementing class should define this method, which
       # is then wrapped by this call.
       #
-      # @param [Actionable::Context, Hash] context The contextual arguments
-      # @return [Actionable::Task] The implementing class instance
+      # @param [Aktions::Context, Hash] context The contextual arguments
+      # @return [Aktions::Task] The implementing class instance
       def call(context = {})
         @context = Context.build(context)
         @_result = super(@context) if defined?(super)

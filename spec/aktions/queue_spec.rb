@@ -3,7 +3,7 @@
 require_relative "../has_context_examples"
 
 class AccumulatorTask
-  include Actionable::Task
+  include Aktions::Task
 
   def call(context)
     step = context.step
@@ -18,7 +18,7 @@ class AccumulatorTask
   end
 end
 
-RSpec.describe Actionable::Queue do
+RSpec.describe Aktions::Queue do
   subject { queue.call(context) }
 
   let(:queue) { described_class.new(tasks) }

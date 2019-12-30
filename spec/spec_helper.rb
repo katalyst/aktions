@@ -4,7 +4,7 @@ require "simplecov"
 SimpleCov.start
 
 require "bundler/setup"
-require "actionable"
+require "aktions"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

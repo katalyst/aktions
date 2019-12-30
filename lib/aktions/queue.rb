@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-module Actionable # :nodoc:
-  # `Actionable::Queue` accepts a list of classes to be invoked in order. These
-  # passed object (either instance or class) must respond to the method `call`,
-  # which takes an optional context parameter and returns `self`, and a method
-  # `#success?` which returns the result of the computation.
+module Aktions # :nodoc:
+  # `Aktions::Queue` accepts a list of classes to be invoked in order. These
+  # passed objects (either instance or class) must respond to the method
+  # `call`, which takes an optional context parameter and returns `self`, and a
+  # method `#success?` which returns the result of the computation.
   #
   # @example
-  #   queue = Actionable::Queue.new(Task1, Task2.new(dependency: service))
+  #   queue = Aktions::Queue.new(Task1, Task2.new(dependency: service))
   #   queue.call(context)
   #   if queue.success?
   #     # success state
@@ -23,7 +23,7 @@ module Actionable # :nodoc:
 
     attr_reader :tasks
 
-    # Initializes a new `Actionable::Queue` with the specified list of classes
+    # Initializes a new `Aktions::Queue` with the specified list of classes.
     #
     # @param [Array] args The list of classes/instances to process
     def initialize(*args)
@@ -42,8 +42,8 @@ module Actionable # :nodoc:
     # Processes the queued tasks in order. Exits the processing if any step
     # fails.
     #
-    # @param [Actionable::Context, Hash] context The context arguments for the steps in the queue
-    # @return [Actionable::Queue] The evaluated instance
+    # @param [Aktions::Context, Hash] context The context arguments for the steps in the queue
+    # @return [Aktions::Queue] The evaluated instance
     def call(context = {})
       success = tasks.reduce(true) do |acc, task|
         break unless acc && task.call(context).success?
