@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Aktions provides a simple and unopinionated interactor pattern for extracting complex business logic"
   spec.homepage      = "https://github.com/kataylst/aktions"
 
-  spec.metadata["allowed_push_host"] = "https://rubygems.org"
+  # spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
